@@ -1,0 +1,5 @@
+com\countrydata\cucumber\serenity\CountryDataSerenity.class
+com\countrydata\testbase\TestBaseCountryData.class
+com\countrydata\cucumber\CountryDataRunner.class
+com\countrydata\utils\ReusableSpecifications.class
+com\countrydata\cucumber\steps\CountryDataSerenitySteps.class

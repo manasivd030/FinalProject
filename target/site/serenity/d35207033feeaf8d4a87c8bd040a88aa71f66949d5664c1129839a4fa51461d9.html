@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Get Country by Alpha Code and name</title>
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+<link rel="apple-touch-icon" sizes="57x57" href="apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff"><link rel="stylesheet" href="bootstrap-icons/bootstrap-icons.css">
+<!-- JQuery -->
+<script type="text/javascript" src="scripts/jquery-1.11.1.min.js"></script><!-- Required Stylesheets -->
+<link href="bootstrap-treeview/dist/bootstrap-treeview.min.css" rel="stylesheet">
+
+<!-- Required Javascript -->
+<script src="bootstrap-treeview/dist/bootstrap-treeview.min.js"></script><!-- DataTables -->
+<link type="text/css" href="datatables/1.13.1/datatables.min.css" rel="stylesheet" />
+<script type="text/javascript" src="datatables/1.13.1/datatables.min.js"></script>
+<script type="text/javascript" src="datatables/1.13.1/time-elapsed-dhms.js"></script>
+
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<script src="bootstrap/js/bootstrap.min.js"></script>
+
+
+<script>
+    jQuery.fn.dataTable.ext.type.order['time-elapsed-dhms-pre'] = function(data) {
+
+        var matches = data.match(/^(\d+(?:\.\d+)?)\s*([a-z]+)/i);
+        var multipliers = {
+            ms: 1,
+            s: 1000,
+            m: 60000,
+            h: 3600000,
+            d: 86400000
+        };
+
+        if (matches) {
+            var multiplier = multipliers[matches[2].toLowerCase()];
+            return parseFloat(matches[1]) * multiplier;
+        } else {
+            return -1;
+        };
+    };
+</script>
+<link rel="stylesheet" href="css/core.css"/>
+<link rel="stylesheet" href="css/link.css"/>
+<link type="text/css" media="screen" href="css/screen.css" rel="Stylesheet"/>
+<!--CHART.JS-->
+<script src="chartjs/chart.js"></script>
+<script src="chartjs/chartjs-plugin-datalabels@2.0.0"></script>
+<script src="chartjs/patternomaly.min.js"></script>
+<script>
+    // Register the plugin to all charts:
+    Chart.register(ChartDataLabels);
+</script>
+<!-- JQuery-UI -->
+<link type="text/css" href="jqueryui/1.11.2-start/jquery-ui.min.css" rel="Stylesheet" />
+<script type="text/javascript" src="jqueryui/1.11.2-start/jquery-ui.min.js"></script><!-- DataTables -->
+<link type="text/css" href="datatables/1.13.1/datatables.min.css" rel="stylesheet" />
+<script type="text/javascript" src="datatables/1.13.1/datatables.min.js"></script>
+<script type="text/javascript" src="datatables/1.13.1/time-elapsed-dhms.js"></script>
+
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<script src="bootstrap/js/bootstrap.min.js"></script>
+
+
+<script>
+    jQuery.fn.dataTable.ext.type.order['time-elapsed-dhms-pre'] = function(data) {
+
+        var matches = data.match(/^(\d+(?:\.\d+)?)\s*([a-z]+)/i);
+        var multipliers = {
+            ms: 1,
+            s: 1000,
+            m: 60000,
+            h: 3600000,
+            d: 86400000
+        };
+
+        if (matches) {
+            var multiplier = multipliers[matches[2].toLowerCase()];
+            return parseFloat(matches[1]) * multiplier;
+        } else {
+            return -1;
+        };
+    };
+</script>
+<!-- ImgPreview -->
+<script src="scripts/imgpreview.full.jquery.js" type="text/javascript"></script>
+</head>
+
+<body class="results-page">
+
+
+<div id="topheader">
+    <div id="topbanner">
+        <div id="logo"><a href="index.html"><img src="images/serenity-logo.png" border="0"/></a></div>
+        <div id="projectname-banner" style="float:right">
+            <span class="projectname">
+                <span class="projecttitle">Serenity BDD Report</span>
+                <span class="projectsubtitle"></span>
+            </span>
+        </div>
+    </div>
+</div>
+
+<div class="middlecontent">
+    <div id="contenttop">
+        <div class="middlebg">
+        <span class="breadcrumbs">
+            <a href="index.html" class="breadcrumbs">Home</a>
+
+ <!-- inflection.of(breadcrumb.displayName).asATitle()-->
+            > <a href="d094135e2360d3eec49ebcde269834a0481b3bc85f5abbf222aed8a8913a096c.html">Testing Country Service</a>
+        > Get country by alpha code and name
+        </span>
+        </div>
+        <div class="rightbg"></div>
+    </div>
+
+    <div class="clr"></div>
+
+    <!--/* starts second table*/-->
+<div>
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#"><i class="bi bi-journal-check"></i> Overall Test Results</a>
+        </li>
+        <li >
+            <a href="capabilities.html"><i class="bi bi-journal-text"></i> Requirements</a>
+        </li>
+        <li >
+            <a href="576946480b52ad056d6f5bddf874399c83582ecf90963cc074a14c70580e7d9f.html"><i class="bi bi-chat-text"></i> Features</a>
+        </li>
+    </ul>
+    <span class="date-and-time"><a href="build-info.html"><i class="bi bi-info-circle"></i></a> Report generated 24-10-2023 22:21</span>
+    <br style="clear:left"/>
+</div>
+    <div class="clr"></div>
+
+
+    <div id="contentbody">
+        <div class="titlebar">
+            <div class="story-title">
+                <table class="outcome-header">
+                    <tr>
+                        <td>
+                                <div>
+                                    <h3 class="discreet-story-header">
+                                        <i class="fs-2 bi bi-chat-left-quote title-icon"></i>
+                                        <span class="story-header-title">Testing Country Service </span>
+                                    </h3>
+
+                                </div>
+
+                        </td>
+                        <td valign="top">
+                            <p class="tag">
+                                    <span class="badge example-tag tag-badge" style="background:default;">
+                                    <i class="bi bi-tag-fill"></i>&nbsp;
+                                        <a class="tagLink" style="background:default;"
+                                           href="6c5512236937b92cd7a296b24edb966c2bd94be46b8910f8b129a42d6150eb25.html">1 To 10 Seconds
+                                              (Duration)
+                                        </a>
+                                </span>
+                                    
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="story-title">
+                <table class="outcome-header">
+                    <tr>
+                        <td colspan="2" class="test-title-bar">
+                            <span class="outcome-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon fa-2x' title='SUCCESS'></i></a></span>
+                            <span class="test-case-title">
+                                <span class="success-color">
+                                    Get Country by Alpha Code and name
+                                        <span class="related-issue-title"></span>
+                                </span>
+                            </span>
+
+
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+
+
+</div>
+</div>
+
+<div class="clr"></div>
+
+    <div class="story-title">
+        <h3 class="story-header">Scenario Outline</h3>
+
+        <div class="scenario">When I make a request to get the country &lt;country&gt; alphacode &lt;alphacode&gt;<br>Then the status code should be &lt;statusCode&gt;<br>Then the country should be &lt;expectedCountry&gt;</div>
+
+    </div>
+
+<div id="beforetable"></div>
+
+
+        <h3 class="story-header">Examples:&nbsp;</h3>
+            <div class="requirementNarrative"></div>
+
+
+            <p class="example-tag">
+            </p>
+
+        <div class="example-table test-report">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>#</th>
+                        <th>Country</th>
+                        <th>Alphacode</th>
+                        <th>Status Code</th>
+                        <th>Expectedcountry</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="test-SUCCESS"><a href="#0">1</a></td>
+                            <td class="test-SUCCESS"><a
+                                        href="#0">India</a>
+                            </td>
+                            <td class="test-SUCCESS"><a
+                                        href="#0">IN</a>
+                            </td>
+                            <td class="test-SUCCESS"><a
+                                        href="#0">200</a>
+                            </td>
+                            <td class="test-SUCCESS"><a
+                                        href="#0">India</a>
+                            </td>
+                    </tr>
+                    <tr>
+                        <td class="test-SUCCESS"><a href="#1">2</a></td>
+                            <td class="test-SUCCESS"><a
+                                        href="#1">Norway</a>
+                            </td>
+                            <td class="test-SUCCESS"><a
+                                        href="#1">NO</a>
+                            </td>
+                            <td class="test-SUCCESS"><a
+                                        href="#1">200</a>
+                            </td>
+                            <td class="test-SUCCESS"><a
+                                        href="#1">Norway</a>
+                            </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+<div id="tablecontents">
+    <div>
+        <table class="step-table">
+            <tr class="step-titles">
+                <th width="65">
+                </th>
+                <th class="step-description-column greentext">
+                    Steps
+                </th>
+
+                <th width="130" class="greentext">Outcome</th>
+                <th width="100" class="greentext"><i title="Duration" class="bi bi-stopwatch"></i></th>
+            </tr>
+            <tr class="step-table-separator">
+                <td colspan="5"></td>
+            </tr>
+
+                <tr class="test-SUCCESS">
+
+                    <td width="50" class="step-icon">
+                        <a name="0"></a>
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection0')"
+                               style="display:block">
+                                <i class="bi bi-caret-right-square imgstepSection0 success-icon"
+                                   style="margin-left: 20px; float:left; padding-right:5px"></i>
+                            </a>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection0')"
+                               style="display:block;">
+                                <span class="top-level-step">
+                                                1: Get Country by Alpha Code and name ({country=India, alphacode=IN, statusCode=200, expectedcountry=India})
+                                        </span>
+                            </a>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="top-level-step">SUCCESS</span></td>
+                    <td width="100"><span class="top-level-step">4s 347ms</span></td>
+                </tr>
+                    <tr>
+                        <td colspan="5">
+                            <table id="stepSection0" class="step-table-nested" style="display:none;">
+                <tr class="test-SUCCESS">
+
+                    <td width="70" class="step-icon">
+                        <a name="0-0"></a>
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection0-0')"
+                               style="display:block">
+                                <i class="bi bi-caret-right-square imgstepSection0-0 success-icon"
+                                   style="margin-left: 40px; float:left; padding-right:5px"></i>
+                            </a>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection0-0')"
+                               style="display:block;">
+                                <span class="nested-step">
+                                                When I make a request to get the country India alphacode IN
+                                        </span>
+                            </a>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-step">4s 224ms</span></td>
+                </tr>
+                    <tr>
+                        <td colspan="5">
+                            <table id="stepSection0-0" class="step-table-nested" style="display:none;">
+                <tr class="test-SUCCESS">
+
+                    <td width="90" class="step-icon">
+                        <a name="0-0-0"></a>
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection0-0-0')"
+                               style="display:block">
+                                <i class="bi bi-caret-right-square imgstepSection0-0-0 success-icon"
+                                   style="margin-left: 60px; float:left; padding-right:5px"></i>
+                            </a>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection0-0-0')"
+                               style="display:block;">
+                                <span class="nested-step">
+                                                Get the country
+                                        </span>
+                            </a>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-step">3s 052ms</span></td>
+                </tr>
+                    <tr>
+                        <td colspan="5">
+                            <table id="stepSection0-0-0" class="step-table-nested" style="display:none;">
+                <tr class="test-SUCCESS">
+
+                    <td width="110" class="step-icon">
+                        <a name="0-0-0-0"></a>
+                            <span style="margin-left: 80px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                GET https://restcountries.com/v3.1/name/India
+                                        </span>
+                            <span class="evidence">
+                                        <span class="piece-of-evidence">
+                <span>
+                        <button type="button" class="btn btn-success btn-sm" data-toggle="collapse"
+                                data-target="#restModal-REST-4">
+                            REST Query
+                        </button>
+                    </span>
+                <!-- Modal -->
+                <div class="rest-query-details">
+                    <div class="collapse multi-collapse" id="restModal-REST-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4>Response</h4>
+                                    <p>URL: https://restcountries.com/v3.1/name/India</p>
+                                    <p>Status code: 200</p>
+                                    <p>Content Type: null</p>
+                                    <h4>Request Headers</h4>
+                                    <pre>Accept=*/*</pre>
+                                    <h4>Response Headers</h4>
+                                    <pre>Date: Tue, 24 Oct 2023 16:51:18 GMT<br>Server: Apache/2.4.38 (Debian)<br>Cache-Control: public, immutable, max-age=31556926<br>Content-Type: application/json<br>content-encoding: gzip<br>content-length: 2440<br>Keep-Alive: timeout=5, max=100<br>Connection: Keep-Alive</pre>
+                                <h4>Response Body</h4>
+                                    <pre>[<br>    {<br>        &quot;name&quot;: {<br>            &quot;common&quot;: &quot;India&quot;,<br>            &quot;official&quot;: &quot;Republic of India&quot;,<br>            &quot;nativeName&quot;: {<br>                &quot;eng&quot;: {<br>                    &quot;official&quot;: &quot;Republic of India&quot;,<br>                    &quot;common&quot;: &quot;India&quot;<br>                },<br>                &quot;hin&quot;: {<br>                    &quot;official&quot;: &quot;भारत गणराज्य&quot;,<br>                    &quot;common&quot;: &quot;भारत&quot;<br>                },<br>                &quot;tam&quot;: {<br>                    &quot;official&quot;: &quot;இந்தியக் குடியரசு&quot;,<br>                    &quot;common&quot;: &quot;இந்தியா&quot;<br>                }<br>            }<br>        },<br>        &quot;tld&quot;: [<br>            &quot;.in&quot;<br>        ],<br>        &quot;cca2&quot;: &quot;IN&quot;,<br>        &quot;ccn3&quot;: &quot;356&quot;,<br>        &quot;cca3&quot;: &quot;IND&quot;,<br>        &quot;cioc&quot;: &quot;IND&quot;,<br>        &quot;independent&quot;: true,<br>        &quot;status&quot;: &quot;officially-assigned&quot;,<br>        &quot;unMember&quot;: true,<br>        &quot;currencies&quot;: {<br>            &quot;INR&quot;: {<br>                &quot;name&quot;: &quot;Indian rupee&quot;,<br>                &quot;symbol&quot;: &quot;₹&quot;<br>            }<br>        },<br>        &quot;idd&quot;: {<br>            &quot;root&quot;: &quot;+9&quot;,<br>            &quot;suffixes&quot;: [<br>                &quot;1&quot;<br>            ]<br>        },<br>        &quot;capital&quot;: [<br>            &quot;New Delhi&quot;<br>        ],<br>        &quot;altSpellings&quot;: [<br>            &quot;IN&quot;,<br>            &quot;Bhārat&quot;,<br>            &quot;Republic of India&quot;,<br>            &quot;Bharat Ganrajya&quot;,<br>            &quot;இந்தியா&quot;<br>        ],<br>        &quot;region&quot;: &quot;Asia&quot;,<br>        &quot;subregion&quot;: &quot;Southern Asia&quot;,<br>        &quot;languages&quot;: {<br>            &quot;eng&quot;: &quot;English&quot;,<br>            &quot;hin&quot;: &quot;Hindi&quot;,<br>            &quot;tam&quot;: &quot;Tamil&quot;<br>        },<br>        &quot;translations&quot;: {<br>            &quot;ara&quot;: {<br>                &quot;official&quot;: &quot;جمهورية الهند&quot;,<br>                &quot;common&quot;: &quot;الهند&quot;<br>            },<br>            &quot;bre&quot;: {<br>                &quot;official&quot;: &quot;Republik India&quot;,<br>                &quot;common&quot;: &quot;India&quot;<br>            },<br>            &quot;ces&quot;: {<br>                &quot;official&quot;: &quot;Indická republika&quot;,<br>                &quot;common&quot;: &quot;Indie&quot;<br>            },<br>            &quot;cym&quot;: {<br>                &quot;official&quot;: &quot;Republic of India&quot;,<br>                &quot;common&quot;: &quot;India&quot;<br>            },<br>            &quot;deu&quot;: {<br>                &quot;official&quot;: &quot;Republik Indien&quot;,<br>                &quot;common&quot;: &quot;Indien&quot;<br>            },<br>            &quot;est&quot;: {<br>                &quot;official&quot;: &quot;India Vabariik&quot;,<br>                &quot;common&quot;: &quot;India&quot;<br>            },<br>            &quot;fin&quot;: {<br>                &quot;official&quot;: &quot;Intian tasavalta&quot;,<br>                &quot;common&quot;: &quot;Intia&quot;<br>            },<br>            &quot;fra&quot;: {<br>                &quot;official&quot;: &quot;République de l'Inde&quot;,<br>                &quot;common&quot;: &quot;Inde&quot;<br>            },<br>            &quot;hrv&quot;: {<br>                &quot;official&quot;: &quot;Republika Indija&quot;,<br>                &quot;common&quot;: &quot;Indija&quot;<br>            },<br>            &quot;hun&quot;: {<br>                &quot;official&quot;: &quot;Indiai Köztársaság&quot;,<br>                &quot;common&quot;: &quot;India&quot;<br>            },<br>            &quot;ita&quot;: {<br>                &quot;official&quot;: &quot;Repubblica dell'India&quot;,<br>                &quot;common&quot;: &quot;India&quot;<br>            },<br>            &quot;jpn&quot;: {<br>                &quot;official&quot;: &quot;インド共和国&quot;,<br>                &quot;common&quot;: &quot;インド&quot;<br>            },<br>            &quot;kor&quot;: {<br>                &quot;official&quot;: &quot;인도 공화국&quot;,<br>                &quot;common&quot;: &quot;인도&quot;<br>            },<br>            &quot;nld&quot;: {<br>                &quot;official&quot;: &quot;Republiek India&quot;,<br>                &quot;common&quot;: &quot;India&quot;<br>            },<br>            &quot;per&quot;: {<br>                &quot;official&quot;: &quot;جمهوری هندوستان&quot;,<br>                &quot;common&quot;: &quot;هند&quot;<br>            },<br>            &quot;pol&quot;: {<br>                &quot;official&quot;: &quot;Republika Indii&quot;,<br>                &quot;common&quot;: &quot;Indie&quot;<br>            },<br>            &quot;por&quot;: {<br>                &quot;official&quot;: &quot;República da Índia&quot;,<br>                &quot;common&quot;: &quot;Índia&quot;<br>            },<br>            &quot;rus&quot;: {<br>                &quot;official&quot;: &quot;Республика Индия&quot;,<br>                &quot;common&quot;: &quot;Индия&quot;<br>            },<br>            &quot;slk&quot;: {<br>                &quot;official&quot;: &quot;Indická republika&quot;,<br>                &quot;common&quot;: &quot;India&quot;<br>            },<br>            &quot;spa&quot;: {<br>                &quot;official&quot;: &quot;República de la India&quot;,<br>                &quot;common&quot;: &quot;India&quot;<br>            },<br>            &quot;srp&quot;: {<br>                &quot;official&quot;: &quot;Република Индија&quot;,<br>                &quot;common&quot;: &quot;Индија&quot;<br>            },<br>            &quot;swe&quot;: {<br>                &quot;official&quot;: &quot;Republiken Indien&quot;,<br>                &quot;common&quot;: &quot;Indien&quot;<br>            },<br>            &quot;tur&quot;: {<br>                &quot;official&quot;: &quot;Hindistan Cumhuriyeti&quot;,<br>                &quot;common&quot;: &quot;Hindistan&quot;<br>            },<br>            &quot;urd&quot;: {<br>                &quot;official&quot;: &quot;جمہوریہ بھارت&quot;,<br>                &quot;common&quot;: &quot;بھارت&quot;<br>            },<br>            &quot;zho&quot;: {<br>                &quot;official&quot;: &quot;印度共和国&quot;,<br>                &quot;common&quot;: &quot;印度&quot;<br>            }<br>        },<br>        &quot;latlng&quot;: [<br>            20.0,<br>            77.0<br>        ],<br>        &quot;landlocked&quot;: false,<br>        &quot;borders&quot;: [<br>            &quot;BGD&quot;,<br>            &quot;BTN&quot;,<br>            &quot;MMR&quot;,<br>            &quot;CHN&quot;,<br>            &quot;NPL&quot;,<br>            &quot;PAK&quot;<br>        ],<br>        &quot;area&quot;: 3287590.0,<br>        &quot;demonyms&quot;: {<br>            &quot;eng&quot;: {<br>                &quot;f&quot;: &quot;Indian&quot;,<br>                &quot;m&quot;: &quot;Indian&quot;<br>            },<br>            &quot;fra&quot;: {<br>                &quot;f&quot;: &quot;Indienne&quot;,<br>                &quot;m&quot;: &quot;Indien&quot;<br>            }<br>        },<br>        &quot;flag&quot;: &quot;🇮🇳&quot;,<br>        &quot;maps&quot;: {<br>            &quot;googleMaps&quot;: &quot;https://goo.gl/maps/WSk3fLwG4vtPQetp7&quot;,<br>            &quot;openStreetMaps&quot;: &quot;https://www.openstreetmap.org/relation/304716&quot;<br>        },<br>        &quot;population&quot;: 1380004385,<br>        &quot;gini&quot;: {<br>            &quot;2011&quot;: 35.7<br>        },<br>        &quot;fifa&quot;: &quot;IND&quot;,<br>        &quot;car&quot;: {<br>            &quot;signs&quot;: [<br>                &quot;IND&quot;<br>            ],<br>            &quot;side&quot;: &quot;left&quot;<br>        },<br>        &quot;timezones&quot;: [<br>            &quot;UTC+05:30&quot;<br>        ],<br>        &quot;continents&quot;: [<br>            &quot;Asia&quot;<br>        ],<br>        &quot;flags&quot;: {<br>            &quot;png&quot;: &quot;https://flagcdn.com/w320/in.png&quot;,<br>            &quot;svg&quot;: &quot;https://flagcdn.com/in.svg&quot;,<br>            &quot;alt&quot;: &quot;The flag of India is composed of three equal horizontal bands of saffron, white and green. A navy blue wheel with twenty-four spokes — the Ashoka Chakra — is centered in the white band.&quot;<br>        },<br>        &quot;coatOfArms&quot;: {<br>            &quot;png&quot;: &quot;https://mainfacts.com/media/images/coats_of_arms/in.png&quot;,<br>            &quot;svg&quot;: &quot;https://mainfacts.com/media/images/coats_of_arms/in.svg&quot;<br>        },<br>        &quot;startOfWeek&quot;: &quot;monday&quot;,<br>        &quot;capitalInfo&quot;: {<br>            &quot;latlng&quot;: [<br>                28.6,<br>                77.2<br>            ]<br>        },<br>        &quot;postalCode&quot;: {<br>            &quot;format&quot;: &quot;######&quot;,<br>            &quot;regex&quot;: &quot;^(\\d{6})$&quot;<br>        }<br>    },<br>    {<br>        &quot;name&quot;: {<br>            &quot;common&quot;: &quot;British Indian Ocean Territory&quot;,<br>            &quot;official&quot;: &quot;British Indian Ocean Territory&quot;,<br>            &quot;nativeName&quot;: {<br>                &quot;eng&quot;: {<br>                    &quot;official&quot;: &quot;British Indian Ocean Territory&quot;,<br>                    &quot;common&quot;: &quot;British Indian Ocean Territory&quot;<br>                }<br>            }<br>        },<br>        &quot;tld&quot;: [<br>            &quot;.io&quot;<br>        ],<br>        &quot;cca2&quot;: &quot;IO&quot;,<br>        &quot;ccn3&quot;: &quot;086&quot;,<br>        &quot;cca3&quot;: &quot;IOT&quot;,<br>        &quot;independent&quot;: false,<br>        &quot;status&quot;: &quot;officially-assigned&quot;,<br>        &quot;unMember&quot;: false,<br>        &quot;currencies&quot;: {<br>            &quot;USD&quot;: {<br>                &quot;name&quot;: &quot;United States dollar&quot;,<br>                &quot;symbol&quot;: &quot;$&quot;<br>            }<br>        },<br>        &quot;idd&quot;: {<br>            &quot;root&quot;: &quot;+2&quot;,<br>            &quot;suffixes&quot;: [<br>                &quot;46&quot;<br>            ]<br>        },<br>        &quot;capital&quot;: [<br>            &quot;Diego Garcia&quot;<br>        ],<br>        &quot;altSpellings&quot;: [<br>            &quot;IO&quot;<br>        ],<br>        &quot;region&quot;: &quot;Africa&quot;,<br>        &quot;subregion&quot;: &quot;Eastern Africa&quot;,<br>        &quot;languages&quot;: {<br>            &quot;eng&quot;: &quot;English&quot;<br>        },<br>        &quot;translations&quot;: {<br>            &quot;ara&quot;: {<br>                &quot;official&quot;: &quot;إقليم المحيط الهندي البريطاني&quot;,<br>                &quot;common&quot;: &quot;إقليم المحيط الهندي البريطاني&quot;<br>            },<br>            &quot;bre&quot;: {<br>                &quot;official&quot;: &quot;Tiriad breizhveurat Meurvor Indez&quot;,<br>                &quot;common&quot;: &quot;Tiriad breizhveurat Meurvor Indez&quot;<br>            },<br>            &quot;ces&quot;: {<br>                &quot;official&quot;: &quot;Britské indickooceánské území&quot;,<br>                &quot;common&quot;: &quot;Britské indickooceánské území&quot;<br>            },<br>            &quot;cym&quot;: {<br>                &quot;official&quot;: &quot;Tiriogaeth Brydeinig Cefnfor India&quot;,<br>                &quot;common&quot;: &quot;Tiriogaeth Brydeinig Cefnfor India&quot;<br>            },<br>            &quot;deu&quot;: {<br>                &quot;official&quot;: &quot;Britisches Territorium im Indischen Ozean&quot;,<br>                &quot;common&quot;: &quot;Britisches Territorium im Indischen Ozean&quot;<br>            },<br>            &quot;est&quot;: {<br>                &quot;official&quot;: &quot;Briti India ookeani ala&quot;,<br>                &quot;common&quot;: &quot;Briti India ookeani ala&quot;<br>            },<br>            &quot;fin&quot;: {<br>                &quot;official&quot;: &quot;Brittiläinen Intian valtameren alue&quot;,<br>                &quot;common&quot;: &quot;Brittiläinen Intian valtameren alue&quot;<br>            },<br>            &quot;fra&quot;: {<br>                &quot;official&quot;: &quot;Territoire britannique de l' océan Indien&quot;,<br>                &quot;common&quot;: &quot;Territoire britannique de l'océan Indien&quot;<br>            },<br>            &quot;hrv&quot;: {<br>                &quot;official&quot;: &quot;British Indian Ocean Territory&quot;,<br>                &quot;common&quot;: &quot;Britanski Indijskooceanski teritorij&quot;<br>            },<br>            &quot;hun&quot;: {<br>                &quot;official&quot;: &quot;Brit Indiai-óceáni Terület&quot;,<br>                &quot;common&quot;: &quot;Brit Indiai-óceáni Terület&quot;<br>            },<br>            &quot;ita&quot;: {<br>                &quot;official&quot;: &quot;Territorio britannico dell'Oceano Indiano&quot;,<br>                &quot;common&quot;: &quot;Territorio britannico dell'oceano indiano&quot;<br>            },<br>            &quot;jpn&quot;: {<br>                &quot;official&quot;: &quot;イギリス領インド洋地域&quot;,<br>                &quot;common&quot;: &quot;イギリス領インド洋地域&quot;<br>            },<br>            &quot;kor&quot;: {<br>                &quot;official&quot;: &quot;인도 공화국&quot;,<br>                &quot;common&quot;: &quot;인도&quot;<br>            },<br>            &quot;nld&quot;: {<br>                &quot;official&quot;: &quot;Brits Indische Oceaan Territorium&quot;,<br>                &quot;common&quot;: &quot;Britse Gebieden in de Indische Oceaan&quot;<br>            },<br>            &quot;per&quot;: {<br>                &quot;official&quot;: &quot;قلمرو بریتانیا در اقیانوس هند&quot;,<br>                &quot;common&quot;: &quot;قلمرو بریتانیا در اقیانوس هند&quot;<br>            },<br>            &quot;pol&quot;: {<br>                &quot;official&quot;: &quot;Brytyjskie Terytorium Oceanu Indyjskiego&quot;,<br>                &quot;common&quot;: &quot;Brytyjskie Terytorium Oceanu Indyjskiego&quot;<br>            },<br>            &quot;por&quot;: {<br>                &quot;official&quot;: &quot;British Indian Ocean Territory&quot;,<br>                &quot;common&quot;: &quot;Território Britânico do Oceano Índico&quot;<br>            },<br>            &quot;rus&quot;: {<br>                &quot;official&quot;: &quot;Британская территория Индийского океана&quot;,<br>                &quot;common&quot;: &quot;Британская территория в Индийском океане&quot;<br>            },<br>            &quot;slk&quot;: {<br>                &quot;official&quot;: &quot;Britské indickooceánske územie&quot;,<br>                &quot;common&quot;: &quot;Britské indickooceánske územie&quot;<br>            },<br>            &quot;spa&quot;: {<br>                &quot;official&quot;: &quot;Territorio Británico del Océano Índico&quot;,<br>                &quot;common&quot;: &quot;Territorio Británico del Océano Índico&quot;<br>            },<br>            &quot;srp&quot;: {<br>                &quot;official&quot;: &quot;Британска територија Индијског океана&quot;,<br>                &quot;common&quot;: &quot;Британска територија Индијског океана&quot;<br>            },<br>            &quot;swe&quot;: {<br>                &quot;official&quot;: &quot;Brittiska territoriet i Indiska Oceanen&quot;,<br>                &quot;common&quot;: &quot;Brittiska territoriet i Indiska Oceanen&quot;<br>            },<br>            &quot;tur&quot;: {<br>                &quot;official&quot;: &quot;Britanya Hint Okyanusu Toprakları&quot;,<br>                &quot;common&quot;: &quot;Britanya Hint Okyanusu Toprakları&quot;<br>            },<br>            &quot;urd&quot;: {<br>                &quot;official&quot;: &quot;برطانوی بحرہند خطہ&quot;,<br>                &quot;common&quot;: &quot;برطانوی بحرہند خطہ&quot;<br>            },<br>            &quot;zho&quot;: {<br>                &quot;official&quot;: &quot;英属印度洋领地&quot;,<br>                &quot;common&quot;: &quot;英属印度洋领地&quot;<br>            }<br>        },<br>        &quot;latlng&quot;: [<br>            -6.0,<br>            71.5<br>        ],<br>        &quot;landlocked&quot;: false,<br>        &quot;area&quot;: 60.0,<br>        &quot;demonyms&quot;: {<br>            &quot;eng&quot;: {<br>                &quot;f&quot;: &quot;Indian&quot;,<br>                &quot;m&quot;: &quot;Indian&quot;<br>            }<br>        },<br>        &quot;flag&quot;: &quot;🇮🇴&quot;,<br>        &quot;maps&quot;: {<br>            &quot;googleMaps&quot;: &quot;https://goo.gl/maps/bheNucgekVEYozoi6&quot;,<br>            &quot;openStreetMaps&quot;: &quot;https://www.openstreetmap.org/relation/1993867&quot;<br>        },<br>        &quot;population&quot;: 3000,<br>        &quot;car&quot;: {<br>            &quot;signs&quot;: [<br>                &quot;GB&quot;<br>            ],<br>            &quot;side&quot;: &quot;right&quot;<br>        },<br>        &quot;timezones&quot;: [<br>            &quot;UTC+06:00&quot;<br>        ],<br>        &quot;continents&quot;: [<br>            &quot;Asia&quot;<br>        ],<br>        &quot;flags&quot;: {<br>            &quot;png&quot;: &quot;https://flagcdn.com/w320/io.png&quot;,<br>            &quot;svg&quot;: &quot;https://flagcdn.com/io.svg&quot;<br>        },<br>        &quot;coatOfArms&quot;: {<br>            <br>        },<br>        &quot;startOfWeek&quot;: &quot;monday&quot;,<br>        &quot;capitalInfo&quot;: {<br>            &quot;latlng&quot;: [<br>                -7.3,<br>                72.4<br>            ]<br>        }<br>    }<br>]</pre>
+                                    <h4>Response Cookies</h4>
+                                    <pre></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                                        </span>
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-group-step">004ms</span></td>
+                </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+                <tr class="test-SUCCESS">
+
+                    <td width="90" class="step-icon">
+                        <a name="0-0-1"></a>
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection0-0-1')"
+                               style="display:block">
+                                <i class="bi bi-caret-right-square imgstepSection0-0-1 success-icon"
+                                   style="margin-left: 60px; float:left; padding-right:5px"></i>
+                            </a>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection0-0-1')"
+                               style="display:block;">
+                                <span class="nested-step">
+                                                Get the alpha code
+                                        </span>
+                            </a>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-step">904ms</span></td>
+                </tr>
+                    <tr>
+                        <td colspan="5">
+                            <table id="stepSection0-0-1" class="step-table-nested" style="display:none;">
+                <tr class="test-SUCCESS">
+
+                    <td width="110" class="step-icon">
+                        <a name="0-0-1-0"></a>
+                            <span style="margin-left: 80px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                GET https://restcountries.com/v3.1/alpha/IN
+                                        </span>
+                            <span class="evidence">
+                                        <span class="piece-of-evidence">
+                <span>
+                        <button type="button" class="btn btn-success btn-sm" data-toggle="collapse"
+                                data-target="#restModal-REST-6">
+                            REST Query
+                        </button>
+                    </span>
+                <!-- Modal -->
+                <div class="rest-query-details">
+                    <div class="collapse multi-collapse" id="restModal-REST-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4>Response</h4>
+                                    <p>URL: https://restcountries.com/v3.1/alpha/IN</p>
+                                    <p>Status code: 200</p>
+                                    <p>Content Type: null</p>
+                                    <h4>Request Headers</h4>
+                                    <pre>Accept=*/*</pre>
+                                    <h4>Response Headers</h4>
+                                    <pre>Date: Tue, 24 Oct 2023 16:51:19 GMT<br>Server: Apache/2.4.38 (Debian)<br>Cache-Control: public, immutable, max-age=31556926<br>Content-Type: application/json<br>content-encoding: gzip<br>content-length: 1496<br>Keep-Alive: timeout=5, max=100<br>Connection: Keep-Alive</pre>
+                                <h4>Response Body</h4>
+                                    <pre>[<br>    {<br>        &quot;name&quot;: {<br>            &quot;common&quot;: &quot;India&quot;,<br>            &quot;official&quot;: &quot;Republic of India&quot;,<br>            &quot;nativeName&quot;: {<br>                &quot;eng&quot;: {<br>                    &quot;official&quot;: &quot;Republic of India&quot;,<br>                    &quot;common&quot;: &quot;India&quot;<br>                },<br>                &quot;hin&quot;: {<br>                    &quot;official&quot;: &quot;भारत गणराज्य&quot;,<br>                    &quot;common&quot;: &quot;भारत&quot;<br>                },<br>                &quot;tam&quot;: {<br>                    &quot;official&quot;: &quot;இந்தியக் குடியரசு&quot;,<br>                    &quot;common&quot;: &quot;இந்தியா&quot;<br>                }<br>            }<br>        },<br>        &quot;tld&quot;: [<br>            &quot;.in&quot;<br>        ],<br>        &quot;cca2&quot;: &quot;IN&quot;,<br>        &quot;ccn3&quot;: &quot;356&quot;,<br>        &quot;cca3&quot;: &quot;IND&quot;,<br>        &quot;cioc&quot;: &quot;IND&quot;,<br>        &quot;independent&quot;: true,<br>        &quot;status&quot;: &quot;officially-assigned&quot;,<br>        &quot;unMember&quot;: true,<br>        &quot;currencies&quot;: {<br>            &quot;INR&quot;: {<br>                &quot;name&quot;: &quot;Indian rupee&quot;,<br>                &quot;symbol&quot;: &quot;₹&quot;<br>            }<br>        },<br>        &quot;idd&quot;: {<br>            &quot;root&quot;: &quot;+9&quot;,<br>            &quot;suffixes&quot;: [<br>                &quot;1&quot;<br>            ]<br>        },<br>        &quot;capital&quot;: [<br>            &quot;New Delhi&quot;<br>        ],<br>        &quot;altSpellings&quot;: [<br>            &quot;IN&quot;,<br>            &quot;Bhārat&quot;,<br>            &quot;Republic of India&quot;,<br>            &quot;Bharat Ganrajya&quot;,<br>            &quot;இந்தியா&quot;<br>        ],<br>        &quot;region&quot;: &quot;Asia&quot;,<br>        &quot;subregion&quot;: &quot;Southern Asia&quot;,<br>        &quot;languages&quot;: {<br>            &quot;eng&quot;: &quot;English&quot;,<br>            &quot;hin&quot;: &quot;Hindi&quot;,<br>            &quot;tam&quot;: &quot;Tamil&quot;<br>        },<br>        &quot;translations&quot;: {<br>            &quot;ara&quot;: {<br>                &quot;official&quot;: &quot;جمهورية الهند&quot;,<br>                &quot;common&quot;: &quot;الهند&quot;<br>            },<br>            &quot;bre&quot;: {<br>                &quot;official&quot;: &quot;Republik India&quot;,<br>                &quot;common&quot;: &quot;India&quot;<br>            },<br>            &quot;ces&quot;: {<br>                &quot;official&quot;: &quot;Indická republika&quot;,<br>                &quot;common&quot;: &quot;Indie&quot;<br>            },<br>            &quot;cym&quot;: {<br>                &quot;official&quot;: &quot;Republic of India&quot;,<br>                &quot;common&quot;: &quot;India&quot;<br>            },<br>            &quot;deu&quot;: {<br>                &quot;official&quot;: &quot;Republik Indien&quot;,<br>                &quot;common&quot;: &quot;Indien&quot;<br>            },<br>            &quot;est&quot;: {<br>                &quot;official&quot;: &quot;India Vabariik&quot;,<br>                &quot;common&quot;: &quot;India&quot;<br>            },<br>            &quot;fin&quot;: {<br>                &quot;official&quot;: &quot;Intian tasavalta&quot;,<br>                &quot;common&quot;: &quot;Intia&quot;<br>            },<br>            &quot;fra&quot;: {<br>                &quot;official&quot;: &quot;République de l'Inde&quot;,<br>                &quot;common&quot;: &quot;Inde&quot;<br>            },<br>            &quot;hrv&quot;: {<br>                &quot;official&quot;: &quot;Republika Indija&quot;,<br>                &quot;common&quot;: &quot;Indija&quot;<br>            },<br>            &quot;hun&quot;: {<br>                &quot;official&quot;: &quot;Indiai Köztársaság&quot;,<br>                &quot;common&quot;: &quot;India&quot;<br>            },<br>            &quot;ita&quot;: {<br>                &quot;official&quot;: &quot;Repubblica dell'India&quot;,<br>                &quot;common&quot;: &quot;India&quot;<br>            },<br>            &quot;jpn&quot;: {<br>                &quot;official&quot;: &quot;インド共和国&quot;,<br>                &quot;common&quot;: &quot;インド&quot;<br>            },<br>            &quot;kor&quot;: {<br>                &quot;official&quot;: &quot;인도 공화국&quot;,<br>                &quot;common&quot;: &quot;인도&quot;<br>            },<br>            &quot;nld&quot;: {<br>                &quot;official&quot;: &quot;Republiek India&quot;,<br>                &quot;common&quot;: &quot;India&quot;<br>            },<br>            &quot;per&quot;: {<br>                &quot;official&quot;: &quot;جمهوری هندوستان&quot;,<br>                &quot;common&quot;: &quot;هند&quot;<br>            },<br>            &quot;pol&quot;: {<br>                &quot;official&quot;: &quot;Republika Indii&quot;,<br>                &quot;common&quot;: &quot;Indie&quot;<br>            },<br>            &quot;por&quot;: {<br>                &quot;official&quot;: &quot;República da Índia&quot;,<br>                &quot;common&quot;: &quot;Índia&quot;<br>            },<br>            &quot;rus&quot;: {<br>                &quot;official&quot;: &quot;Республика Индия&quot;,<br>                &quot;common&quot;: &quot;Индия&quot;<br>            },<br>            &quot;slk&quot;: {<br>                &quot;official&quot;: &quot;Indická republika&quot;,<br>                &quot;common&quot;: &quot;India&quot;<br>            },<br>            &quot;spa&quot;: {<br>                &quot;official&quot;: &quot;República de la India&quot;,<br>                &quot;common&quot;: &quot;India&quot;<br>            },<br>            &quot;srp&quot;: {<br>                &quot;official&quot;: &quot;Република Индија&quot;,<br>                &quot;common&quot;: &quot;Индија&quot;<br>            },<br>            &quot;swe&quot;: {<br>                &quot;official&quot;: &quot;Republiken Indien&quot;,<br>                &quot;common&quot;: &quot;Indien&quot;<br>            },<br>            &quot;tur&quot;: {<br>                &quot;official&quot;: &quot;Hindistan Cumhuriyeti&quot;,<br>                &quot;common&quot;: &quot;Hindistan&quot;<br>            },<br>            &quot;urd&quot;: {<br>                &quot;official&quot;: &quot;جمہوریہ بھارت&quot;,<br>                &quot;common&quot;: &quot;بھارت&quot;<br>            },<br>            &quot;zho&quot;: {<br>                &quot;official&quot;: &quot;印度共和国&quot;,<br>                &quot;common&quot;: &quot;印度&quot;<br>            }<br>        },<br>        &quot;latlng&quot;: [<br>            20.0,<br>            77.0<br>        ],<br>        &quot;landlocked&quot;: false,<br>        &quot;borders&quot;: [<br>            &quot;BGD&quot;,<br>            &quot;BTN&quot;,<br>            &quot;MMR&quot;,<br>            &quot;CHN&quot;,<br>            &quot;NPL&quot;,<br>            &quot;PAK&quot;<br>        ],<br>        &quot;area&quot;: 3287590.0,<br>        &quot;demonyms&quot;: {<br>            &quot;eng&quot;: {<br>                &quot;f&quot;: &quot;Indian&quot;,<br>                &quot;m&quot;: &quot;Indian&quot;<br>            },<br>            &quot;fra&quot;: {<br>                &quot;f&quot;: &quot;Indienne&quot;,<br>                &quot;m&quot;: &quot;Indien&quot;<br>            }<br>        },<br>        &quot;flag&quot;: &quot;🇮🇳&quot;,<br>        &quot;maps&quot;: {<br>            &quot;googleMaps&quot;: &quot;https://goo.gl/maps/WSk3fLwG4vtPQetp7&quot;,<br>            &quot;openStreetMaps&quot;: &quot;https://www.openstreetmap.org/relation/304716&quot;<br>        },<br>        &quot;population&quot;: 1380004385,<br>        &quot;gini&quot;: {<br>            &quot;2011&quot;: 35.7<br>        },<br>        &quot;fifa&quot;: &quot;IND&quot;,<br>        &quot;car&quot;: {<br>            &quot;signs&quot;: [<br>                &quot;IND&quot;<br>            ],<br>            &quot;side&quot;: &quot;left&quot;<br>        },<br>        &quot;timezones&quot;: [<br>            &quot;UTC+05:30&quot;<br>        ],<br>        &quot;continents&quot;: [<br>            &quot;Asia&quot;<br>        ],<br>        &quot;flags&quot;: {<br>            &quot;png&quot;: &quot;https://flagcdn.com/w320/in.png&quot;,<br>            &quot;svg&quot;: &quot;https://flagcdn.com/in.svg&quot;,<br>            &quot;alt&quot;: &quot;The flag of India is composed of three equal horizontal bands of saffron, white and green. A navy blue wheel with twenty-four spokes — the Ashoka Chakra — is centered in the white band.&quot;<br>        },<br>        &quot;coatOfArms&quot;: {<br>            &quot;png&quot;: &quot;https://mainfacts.com/media/images/coats_of_arms/in.png&quot;,<br>            &quot;svg&quot;: &quot;https://mainfacts.com/media/images/coats_of_arms/in.svg&quot;<br>        },<br>        &quot;startOfWeek&quot;: &quot;monday&quot;,<br>        &quot;capitalInfo&quot;: {<br>            &quot;latlng&quot;: [<br>                28.6,<br>                77.2<br>            ]<br>        },<br>        &quot;postalCode&quot;: {<br>            &quot;format&quot;: &quot;######&quot;,<br>            &quot;regex&quot;: &quot;^(\\d{6})$&quot;<br>        }<br>    }<br>]</pre>
+                                    <h4>Response Cookies</h4>
+                                    <pre></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                                        </span>
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-group-step">001ms</span></td>
+                </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+                <tr class="test-SUCCESS">
+
+                    <td width="70" class="step-icon">
+                        <a name="0-1"></a>
+                            <span style="margin-left: 40px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                Then the status code should be 200
+                                        </span>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-group-step">030ms</span></td>
+                </tr>
+                <tr class="test-SUCCESS">
+
+                    <td width="70" class="step-icon">
+                        <a name="0-2"></a>
+                            <span style="margin-left: 40px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                Then the country should be &lt;expectedCountry&gt;
+                                        </span>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-group-step">018ms</span></td>
+                </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+                <tr class="test-SUCCESS">
+
+                    <td width="50" class="step-icon">
+                        <a name="1"></a>
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection1')"
+                               style="display:block">
+                                <i class="bi bi-caret-right-square imgstepSection1 success-icon"
+                                   style="margin-left: 20px; float:left; padding-right:5px"></i>
+                            </a>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection1')"
+                               style="display:block;">
+                                <span class="top-level-step">
+                                                2: Get Country by Alpha Code and name ({country=Norway, alphacode=NO, statusCode=200, expectedcountry=Norway})
+                                        </span>
+                            </a>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="top-level-step">SUCCESS</span></td>
+                    <td width="100"><span class="top-level-step">1s 862ms</span></td>
+                </tr>
+                    <tr>
+                        <td colspan="5">
+                            <table id="stepSection1" class="step-table-nested" style="display:none;">
+                <tr class="test-SUCCESS">
+
+                    <td width="70" class="step-icon">
+                        <a name="1-0"></a>
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection1-0')"
+                               style="display:block">
+                                <i class="bi bi-caret-right-square imgstepSection1-0 success-icon"
+                                   style="margin-left: 40px; float:left; padding-right:5px"></i>
+                            </a>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection1-0')"
+                               style="display:block;">
+                                <span class="nested-step">
+                                                When I make a request to get the country Norway alphacode NO
+                                        </span>
+                            </a>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-step">1s 834ms</span></td>
+                </tr>
+                    <tr>
+                        <td colspan="5">
+                            <table id="stepSection1-0" class="step-table-nested" style="display:none;">
+                <tr class="test-SUCCESS">
+
+                    <td width="90" class="step-icon">
+                        <a name="1-0-0"></a>
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection1-0-0')"
+                               style="display:block">
+                                <i class="bi bi-caret-right-square imgstepSection1-0-0 success-icon"
+                                   style="margin-left: 60px; float:left; padding-right:5px"></i>
+                            </a>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection1-0-0')"
+                               style="display:block;">
+                                <span class="nested-step">
+                                                Get the country
+                                        </span>
+                            </a>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-step">902ms</span></td>
+                </tr>
+                    <tr>
+                        <td colspan="5">
+                            <table id="stepSection1-0-0" class="step-table-nested" style="display:none;">
+                <tr class="test-SUCCESS">
+
+                    <td width="110" class="step-icon">
+                        <a name="1-0-0-0"></a>
+                            <span style="margin-left: 80px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                GET https://restcountries.com/v3.1/name/Norway
+                                        </span>
+                            <span class="evidence">
+                                        <span class="piece-of-evidence">
+                <span>
+                        <button type="button" class="btn btn-success btn-sm" data-toggle="collapse"
+                                data-target="#restModal-REST-12">
+                            REST Query
+                        </button>
+                    </span>
+                <!-- Modal -->
+                <div class="rest-query-details">
+                    <div class="collapse multi-collapse" id="restModal-REST-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4>Response</h4>
+                                    <p>URL: https://restcountries.com/v3.1/name/Norway</p>
+                                    <p>Status code: 200</p>
+                                    <p>Content Type: null</p>
+                                    <h4>Request Headers</h4>
+                                    <pre>Accept=*/*</pre>
+                                    <h4>Response Headers</h4>
+                                    <pre>Date: Tue, 24 Oct 2023 16:51:20 GMT<br>Server: Apache/2.4.38 (Debian)<br>Cache-Control: public, immutable, max-age=31556926<br>Content-Type: application/json<br>content-encoding: gzip<br>content-length: 1516<br>Keep-Alive: timeout=5, max=100<br>Connection: Keep-Alive</pre>
+                                <h4>Response Body</h4>
+                                    <pre>[<br>    {<br>        &quot;name&quot;: {<br>            &quot;common&quot;: &quot;Norway&quot;,<br>            &quot;official&quot;: &quot;Kingdom of Norway&quot;,<br>            &quot;nativeName&quot;: {<br>                &quot;nno&quot;: {<br>                    &quot;official&quot;: &quot;Kongeriket Noreg&quot;,<br>                    &quot;common&quot;: &quot;Noreg&quot;<br>                },<br>                &quot;nob&quot;: {<br>                    &quot;official&quot;: &quot;Kongeriket Norge&quot;,<br>                    &quot;common&quot;: &quot;Norge&quot;<br>                },<br>                &quot;smi&quot;: {<br>                    &quot;official&quot;: &quot;Norgga gonagasriika&quot;,<br>                    &quot;common&quot;: &quot;Norgga&quot;<br>                }<br>            }<br>        },<br>        &quot;tld&quot;: [<br>            &quot;.no&quot;<br>        ],<br>        &quot;cca2&quot;: &quot;NO&quot;,<br>        &quot;ccn3&quot;: &quot;578&quot;,<br>        &quot;cca3&quot;: &quot;NOR&quot;,<br>        &quot;cioc&quot;: &quot;NOR&quot;,<br>        &quot;independent&quot;: true,<br>        &quot;status&quot;: &quot;officially-assigned&quot;,<br>        &quot;unMember&quot;: true,<br>        &quot;currencies&quot;: {<br>            &quot;NOK&quot;: {<br>                &quot;name&quot;: &quot;Norwegian krone&quot;,<br>                &quot;symbol&quot;: &quot;kr&quot;<br>            }<br>        },<br>        &quot;idd&quot;: {<br>            &quot;root&quot;: &quot;+4&quot;,<br>            &quot;suffixes&quot;: [<br>                &quot;7&quot;<br>            ]<br>        },<br>        &quot;capital&quot;: [<br>            &quot;Oslo&quot;<br>        ],<br>        &quot;altSpellings&quot;: [<br>            &quot;NO&quot;,<br>            &quot;Norge&quot;,<br>            &quot;Noreg&quot;,<br>            &quot;Kingdom of Norway&quot;,<br>            &quot;Kongeriket Norge&quot;,<br>            &quot;Kongeriket Noreg&quot;<br>        ],<br>        &quot;region&quot;: &quot;Europe&quot;,<br>        &quot;subregion&quot;: &quot;Northern Europe&quot;,<br>        &quot;languages&quot;: {<br>            &quot;nno&quot;: &quot;Norwegian Nynorsk&quot;,<br>            &quot;nob&quot;: &quot;Norwegian Bokmål&quot;,<br>            &quot;smi&quot;: &quot;Sami&quot;<br>        },<br>        &quot;translations&quot;: {<br>            &quot;ara&quot;: {<br>                &quot;official&quot;: &quot;مملكة النرويج&quot;,<br>                &quot;common&quot;: &quot;النرويج&quot;<br>            },<br>            &quot;bre&quot;: {<br>                &quot;official&quot;: &quot;Rouantelezh Norvegia&quot;,<br>                &quot;common&quot;: &quot;Norvegia&quot;<br>            },<br>            &quot;ces&quot;: {<br>                &quot;official&quot;: &quot;Norské království&quot;,<br>                &quot;common&quot;: &quot;Norsko&quot;<br>            },<br>            &quot;cym&quot;: {<br>                &quot;official&quot;: &quot;Kingdom of Norway&quot;,<br>                &quot;common&quot;: &quot;Norway&quot;<br>            },<br>            &quot;deu&quot;: {<br>                &quot;official&quot;: &quot;Königreich Norwegen&quot;,<br>                &quot;common&quot;: &quot;Norwegen&quot;<br>            },<br>            &quot;est&quot;: {<br>                &quot;official&quot;: &quot;Norra Kuningriik&quot;,<br>                &quot;common&quot;: &quot;Norra&quot;<br>            },<br>            &quot;fin&quot;: {<br>                &quot;official&quot;: &quot;Norjan kuningaskunta&quot;,<br>                &quot;common&quot;: &quot;Norja&quot;<br>            },<br>            &quot;fra&quot;: {<br>                &quot;official&quot;: &quot;Royaume de Norvège&quot;,<br>                &quot;common&quot;: &quot;Norvège&quot;<br>            },<br>            &quot;hrv&quot;: {<br>                &quot;official&quot;: &quot;Kraljevina Norveška&quot;,<br>                &quot;common&quot;: &quot;Norveška&quot;<br>            },<br>            &quot;hun&quot;: {<br>                &quot;official&quot;: &quot;Norvég Királyság&quot;,<br>                &quot;common&quot;: &quot;Norvégia&quot;<br>            },<br>            &quot;ita&quot;: {<br>                &quot;official&quot;: &quot;Regno di Norvegia&quot;,<br>                &quot;common&quot;: &quot;Norvegia&quot;<br>            },<br>            &quot;jpn&quot;: {<br>                &quot;official&quot;: &quot;ノルウェー王国&quot;,<br>                &quot;common&quot;: &quot;ノルウェー&quot;<br>            },<br>            &quot;kor&quot;: {<br>                &quot;official&quot;: &quot;노르웨이 왕국&quot;,<br>                &quot;common&quot;: &quot;노르웨이&quot;<br>            },<br>            &quot;nld&quot;: {<br>                &quot;official&quot;: &quot;Koninkrijk Noorwegen&quot;,<br>                &quot;common&quot;: &quot;Noorwegen&quot;<br>            },<br>            &quot;per&quot;: {<br>                &quot;official&quot;: &quot;پادشاهی نروژ&quot;,<br>                &quot;common&quot;: &quot;نروژ&quot;<br>            },<br>            &quot;pol&quot;: {<br>                &quot;official&quot;: &quot;Królestwo Norwegii&quot;,<br>                &quot;common&quot;: &quot;Norwegia&quot;<br>            },<br>            &quot;por&quot;: {<br>                &quot;official&quot;: &quot;Reino da Noruega&quot;,<br>                &quot;common&quot;: &quot;Noruega&quot;<br>            },<br>            &quot;rus&quot;: {<br>                &quot;official&quot;: &quot;Королевство Норвегия&quot;,<br>                &quot;common&quot;: &quot;Норвегия&quot;<br>            },<br>            &quot;slk&quot;: {<br>                &quot;official&quot;: &quot;Nórske kráľovstvo&quot;,<br>                &quot;common&quot;: &quot;Nórsko&quot;<br>            },<br>            &quot;spa&quot;: {<br>                &quot;official&quot;: &quot;Reino de Noruega&quot;,<br>                &quot;common&quot;: &quot;Noruega&quot;<br>            },<br>            &quot;srp&quot;: {<br>                &quot;official&quot;: &quot;Краљевина Норвешка&quot;,<br>                &quot;common&quot;: &quot;Норвешка&quot;<br>            },<br>            &quot;swe&quot;: {<br>                &quot;official&quot;: &quot;Konungariket Norge&quot;,<br>                &quot;common&quot;: &quot;Norge&quot;<br>            },<br>            &quot;tur&quot;: {<br>                &quot;official&quot;: &quot;Norveç Krallığı&quot;,<br>                &quot;common&quot;: &quot;Norveç&quot;<br>            },<br>            &quot;urd&quot;: {<br>                &quot;official&quot;: &quot;مملکتِ ناروے&quot;,<br>                &quot;common&quot;: &quot;ناروے&quot;<br>            },<br>            &quot;zho&quot;: {<br>                &quot;official&quot;: &quot;挪威王国&quot;,<br>                &quot;common&quot;: &quot;挪威&quot;<br>            }<br>        },<br>        &quot;latlng&quot;: [<br>            62.0,<br>            10.0<br>        ],<br>        &quot;landlocked&quot;: false,<br>        &quot;borders&quot;: [<br>            &quot;FIN&quot;,<br>            &quot;SWE&quot;,<br>            &quot;RUS&quot;<br>        ],<br>        &quot;area&quot;: 323802.0,<br>        &quot;demonyms&quot;: {<br>            &quot;eng&quot;: {<br>                &quot;f&quot;: &quot;Norwegian&quot;,<br>                &quot;m&quot;: &quot;Norwegian&quot;<br>            },<br>            &quot;fra&quot;: {<br>                &quot;f&quot;: &quot;Norvégienne&quot;,<br>                &quot;m&quot;: &quot;Norvégien&quot;<br>            }<br>        },<br>        &quot;flag&quot;: &quot;🇳🇴&quot;,<br>        &quot;maps&quot;: {<br>            &quot;googleMaps&quot;: &quot;https://goo.gl/maps/htWRrphA7vNgQNdSA&quot;,<br>            &quot;openStreetMaps&quot;: &quot;https://www.openstreetmap.org/relation/2978650&quot;<br>        },<br>        &quot;population&quot;: 5379475,<br>        &quot;gini&quot;: {<br>            &quot;2018&quot;: 27.6<br>        },<br>        &quot;fifa&quot;: &quot;NOR&quot;,<br>        &quot;car&quot;: {<br>            &quot;signs&quot;: [<br>                &quot;N&quot;<br>            ],<br>            &quot;side&quot;: &quot;right&quot;<br>        },<br>        &quot;timezones&quot;: [<br>            &quot;UTC+01:00&quot;<br>        ],<br>        &quot;continents&quot;: [<br>            &quot;Europe&quot;<br>        ],<br>        &quot;flags&quot;: {<br>            &quot;png&quot;: &quot;https://flagcdn.com/w320/no.png&quot;,<br>            &quot;svg&quot;: &quot;https://flagcdn.com/no.svg&quot;,<br>            &quot;alt&quot;: &quot;The flag of Norway has a red field with a large white-edged navy blue cross that extends to the edges of the field. The vertical part of this cross is offset towards the hoist side.&quot;<br>        },<br>        &quot;coatOfArms&quot;: {<br>            &quot;png&quot;: &quot;https://mainfacts.com/media/images/coats_of_arms/no.png&quot;,<br>            &quot;svg&quot;: &quot;https://mainfacts.com/media/images/coats_of_arms/no.svg&quot;<br>        },<br>        &quot;startOfWeek&quot;: &quot;monday&quot;,<br>        &quot;capitalInfo&quot;: {<br>            &quot;latlng&quot;: [<br>                59.92,<br>                10.75<br>            ]<br>        },<br>        &quot;postalCode&quot;: {<br>            &quot;format&quot;: &quot;####&quot;,<br>            &quot;regex&quot;: &quot;^(\\d{4})$&quot;<br>        }<br>    }<br>]</pre>
+                                    <h4>Response Cookies</h4>
+                                    <pre></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                                        </span>
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-group-step"></span></td>
+                </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+                <tr class="test-SUCCESS">
+
+                    <td width="90" class="step-icon">
+                        <a name="1-0-1"></a>
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection1-0-1')"
+                               style="display:block">
+                                <i class="bi bi-caret-right-square imgstepSection1-0-1 success-icon"
+                                   style="margin-left: 60px; float:left; padding-right:5px"></i>
+                            </a>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection1-0-1')"
+                               style="display:block;">
+                                <span class="nested-step">
+                                                Get the alpha code
+                                        </span>
+                            </a>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-step">921ms</span></td>
+                </tr>
+                    <tr>
+                        <td colspan="5">
+                            <table id="stepSection1-0-1" class="step-table-nested" style="display:none;">
+                <tr class="test-SUCCESS">
+
+                    <td width="110" class="step-icon">
+                        <a name="1-0-1-0"></a>
+                            <span style="margin-left: 80px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                GET https://restcountries.com/v3.1/alpha/NO
+                                        </span>
+                            <span class="evidence">
+                                        <span class="piece-of-evidence">
+                <span>
+                        <button type="button" class="btn btn-success btn-sm" data-toggle="collapse"
+                                data-target="#restModal-REST-14">
+                            REST Query
+                        </button>
+                    </span>
+                <!-- Modal -->
+                <div class="rest-query-details">
+                    <div class="collapse multi-collapse" id="restModal-REST-14">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4>Response</h4>
+                                    <p>URL: https://restcountries.com/v3.1/alpha/NO</p>
+                                    <p>Status code: 200</p>
+                                    <p>Content Type: null</p>
+                                    <h4>Request Headers</h4>
+                                    <pre>Accept=*/*</pre>
+                                    <h4>Response Headers</h4>
+                                    <pre>Date: Tue, 24 Oct 2023 16:51:21 GMT<br>Server: Apache/2.4.38 (Debian)<br>Cache-Control: public, immutable, max-age=31556926<br>Content-Type: application/json<br>content-encoding: gzip<br>content-length: 1516<br>Keep-Alive: timeout=5, max=100<br>Connection: Keep-Alive</pre>
+                                <h4>Response Body</h4>
+                                    <pre>[<br>    {<br>        &quot;name&quot;: {<br>            &quot;common&quot;: &quot;Norway&quot;,<br>            &quot;official&quot;: &quot;Kingdom of Norway&quot;,<br>            &quot;nativeName&quot;: {<br>                &quot;nno&quot;: {<br>                    &quot;official&quot;: &quot;Kongeriket Noreg&quot;,<br>                    &quot;common&quot;: &quot;Noreg&quot;<br>                },<br>                &quot;nob&quot;: {<br>                    &quot;official&quot;: &quot;Kongeriket Norge&quot;,<br>                    &quot;common&quot;: &quot;Norge&quot;<br>                },<br>                &quot;smi&quot;: {<br>                    &quot;official&quot;: &quot;Norgga gonagasriika&quot;,<br>                    &quot;common&quot;: &quot;Norgga&quot;<br>                }<br>            }<br>        },<br>        &quot;tld&quot;: [<br>            &quot;.no&quot;<br>        ],<br>        &quot;cca2&quot;: &quot;NO&quot;,<br>        &quot;ccn3&quot;: &quot;578&quot;,<br>        &quot;cca3&quot;: &quot;NOR&quot;,<br>        &quot;cioc&quot;: &quot;NOR&quot;,<br>        &quot;independent&quot;: true,<br>        &quot;status&quot;: &quot;officially-assigned&quot;,<br>        &quot;unMember&quot;: true,<br>        &quot;currencies&quot;: {<br>            &quot;NOK&quot;: {<br>                &quot;name&quot;: &quot;Norwegian krone&quot;,<br>                &quot;symbol&quot;: &quot;kr&quot;<br>            }<br>        },<br>        &quot;idd&quot;: {<br>            &quot;root&quot;: &quot;+4&quot;,<br>            &quot;suffixes&quot;: [<br>                &quot;7&quot;<br>            ]<br>        },<br>        &quot;capital&quot;: [<br>            &quot;Oslo&quot;<br>        ],<br>        &quot;altSpellings&quot;: [<br>            &quot;NO&quot;,<br>            &quot;Norge&quot;,<br>            &quot;Noreg&quot;,<br>            &quot;Kingdom of Norway&quot;,<br>            &quot;Kongeriket Norge&quot;,<br>            &quot;Kongeriket Noreg&quot;<br>        ],<br>        &quot;region&quot;: &quot;Europe&quot;,<br>        &quot;subregion&quot;: &quot;Northern Europe&quot;,<br>        &quot;languages&quot;: {<br>            &quot;nno&quot;: &quot;Norwegian Nynorsk&quot;,<br>            &quot;nob&quot;: &quot;Norwegian Bokmål&quot;,<br>            &quot;smi&quot;: &quot;Sami&quot;<br>        },<br>        &quot;translations&quot;: {<br>            &quot;ara&quot;: {<br>                &quot;official&quot;: &quot;مملكة النرويج&quot;,<br>                &quot;common&quot;: &quot;النرويج&quot;<br>            },<br>            &quot;bre&quot;: {<br>                &quot;official&quot;: &quot;Rouantelezh Norvegia&quot;,<br>                &quot;common&quot;: &quot;Norvegia&quot;<br>            },<br>            &quot;ces&quot;: {<br>                &quot;official&quot;: &quot;Norské království&quot;,<br>                &quot;common&quot;: &quot;Norsko&quot;<br>            },<br>            &quot;cym&quot;: {<br>                &quot;official&quot;: &quot;Kingdom of Norway&quot;,<br>                &quot;common&quot;: &quot;Norway&quot;<br>            },<br>            &quot;deu&quot;: {<br>                &quot;official&quot;: &quot;Königreich Norwegen&quot;,<br>                &quot;common&quot;: &quot;Norwegen&quot;<br>            },<br>            &quot;est&quot;: {<br>                &quot;official&quot;: &quot;Norra Kuningriik&quot;,<br>                &quot;common&quot;: &quot;Norra&quot;<br>            },<br>            &quot;fin&quot;: {<br>                &quot;official&quot;: &quot;Norjan kuningaskunta&quot;,<br>                &quot;common&quot;: &quot;Norja&quot;<br>            },<br>            &quot;fra&quot;: {<br>                &quot;official&quot;: &quot;Royaume de Norvège&quot;,<br>                &quot;common&quot;: &quot;Norvège&quot;<br>            },<br>            &quot;hrv&quot;: {<br>                &quot;official&quot;: &quot;Kraljevina Norveška&quot;,<br>                &quot;common&quot;: &quot;Norveška&quot;<br>            },<br>            &quot;hun&quot;: {<br>                &quot;official&quot;: &quot;Norvég Királyság&quot;,<br>                &quot;common&quot;: &quot;Norvégia&quot;<br>            },<br>            &quot;ita&quot;: {<br>                &quot;official&quot;: &quot;Regno di Norvegia&quot;,<br>                &quot;common&quot;: &quot;Norvegia&quot;<br>            },<br>            &quot;jpn&quot;: {<br>                &quot;official&quot;: &quot;ノルウェー王国&quot;,<br>                &quot;common&quot;: &quot;ノルウェー&quot;<br>            },<br>            &quot;kor&quot;: {<br>                &quot;official&quot;: &quot;노르웨이 왕국&quot;,<br>                &quot;common&quot;: &quot;노르웨이&quot;<br>            },<br>            &quot;nld&quot;: {<br>                &quot;official&quot;: &quot;Koninkrijk Noorwegen&quot;,<br>                &quot;common&quot;: &quot;Noorwegen&quot;<br>            },<br>            &quot;per&quot;: {<br>                &quot;official&quot;: &quot;پادشاهی نروژ&quot;,<br>                &quot;common&quot;: &quot;نروژ&quot;<br>            },<br>            &quot;pol&quot;: {<br>                &quot;official&quot;: &quot;Królestwo Norwegii&quot;,<br>                &quot;common&quot;: &quot;Norwegia&quot;<br>            },<br>            &quot;por&quot;: {<br>                &quot;official&quot;: &quot;Reino da Noruega&quot;,<br>                &quot;common&quot;: &quot;Noruega&quot;<br>            },<br>            &quot;rus&quot;: {<br>                &quot;official&quot;: &quot;Королевство Норвегия&quot;,<br>                &quot;common&quot;: &quot;Норвегия&quot;<br>            },<br>            &quot;slk&quot;: {<br>                &quot;official&quot;: &quot;Nórske kráľovstvo&quot;,<br>                &quot;common&quot;: &quot;Nórsko&quot;<br>            },<br>            &quot;spa&quot;: {<br>                &quot;official&quot;: &quot;Reino de Noruega&quot;,<br>                &quot;common&quot;: &quot;Noruega&quot;<br>            },<br>            &quot;srp&quot;: {<br>                &quot;official&quot;: &quot;Краљевина Норвешка&quot;,<br>                &quot;common&quot;: &quot;Норвешка&quot;<br>            },<br>            &quot;swe&quot;: {<br>                &quot;official&quot;: &quot;Konungariket Norge&quot;,<br>                &quot;common&quot;: &quot;Norge&quot;<br>            },<br>            &quot;tur&quot;: {<br>                &quot;official&quot;: &quot;Norveç Krallığı&quot;,<br>                &quot;common&quot;: &quot;Norveç&quot;<br>            },<br>            &quot;urd&quot;: {<br>                &quot;official&quot;: &quot;مملکتِ ناروے&quot;,<br>                &quot;common&quot;: &quot;ناروے&quot;<br>            },<br>            &quot;zho&quot;: {<br>                &quot;official&quot;: &quot;挪威王国&quot;,<br>                &quot;common&quot;: &quot;挪威&quot;<br>            }<br>        },<br>        &quot;latlng&quot;: [<br>            62.0,<br>            10.0<br>        ],<br>        &quot;landlocked&quot;: false,<br>        &quot;borders&quot;: [<br>            &quot;FIN&quot;,<br>            &quot;SWE&quot;,<br>            &quot;RUS&quot;<br>        ],<br>        &quot;area&quot;: 323802.0,<br>        &quot;demonyms&quot;: {<br>            &quot;eng&quot;: {<br>                &quot;f&quot;: &quot;Norwegian&quot;,<br>                &quot;m&quot;: &quot;Norwegian&quot;<br>            },<br>            &quot;fra&quot;: {<br>                &quot;f&quot;: &quot;Norvégienne&quot;,<br>                &quot;m&quot;: &quot;Norvégien&quot;<br>            }<br>        },<br>        &quot;flag&quot;: &quot;🇳🇴&quot;,<br>        &quot;maps&quot;: {<br>            &quot;googleMaps&quot;: &quot;https://goo.gl/maps/htWRrphA7vNgQNdSA&quot;,<br>            &quot;openStreetMaps&quot;: &quot;https://www.openstreetmap.org/relation/2978650&quot;<br>        },<br>        &quot;population&quot;: 5379475,<br>        &quot;gini&quot;: {<br>            &quot;2018&quot;: 27.6<br>        },<br>        &quot;fifa&quot;: &quot;NOR&quot;,<br>        &quot;car&quot;: {<br>            &quot;signs&quot;: [<br>                &quot;N&quot;<br>            ],<br>            &quot;side&quot;: &quot;right&quot;<br>        },<br>        &quot;timezones&quot;: [<br>            &quot;UTC+01:00&quot;<br>        ],<br>        &quot;continents&quot;: [<br>            &quot;Europe&quot;<br>        ],<br>        &quot;flags&quot;: {<br>            &quot;png&quot;: &quot;https://flagcdn.com/w320/no.png&quot;,<br>            &quot;svg&quot;: &quot;https://flagcdn.com/no.svg&quot;,<br>            &quot;alt&quot;: &quot;The flag of Norway has a red field with a large white-edged navy blue cross that extends to the edges of the field. The vertical part of this cross is offset towards the hoist side.&quot;<br>        },<br>        &quot;coatOfArms&quot;: {<br>            &quot;png&quot;: &quot;https://mainfacts.com/media/images/coats_of_arms/no.png&quot;,<br>            &quot;svg&quot;: &quot;https://mainfacts.com/media/images/coats_of_arms/no.svg&quot;<br>        },<br>        &quot;startOfWeek&quot;: &quot;monday&quot;,<br>        &quot;capitalInfo&quot;: {<br>            &quot;latlng&quot;: [<br>                59.92,<br>                10.75<br>            ]<br>        },<br>        &quot;postalCode&quot;: {<br>            &quot;format&quot;: &quot;####&quot;,<br>            &quot;regex&quot;: &quot;^(\\d{4})$&quot;<br>        }<br>    }<br>]</pre>
+                                    <h4>Response Cookies</h4>
+                                    <pre></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                                        </span>
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-group-step"></span></td>
+                </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+                <tr class="test-SUCCESS">
+
+                    <td width="70" class="step-icon">
+                        <a name="1-1"></a>
+                            <span style="margin-left: 40px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                Then the status code should be 200
+                                        </span>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-group-step">016ms</span></td>
+                </tr>
+                <tr class="test-SUCCESS">
+
+                    <td width="70" class="step-icon">
+                        <a name="1-2"></a>
+                            <span style="margin-left: 40px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                Then the country should be &lt;expectedCountry&gt;
+                                        </span>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-group-step">002ms</span></td>
+                </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+            <tr class="test-SUCCESS">
+                    <td colspan="2"></td>
+                <td width="130"><span class="top-level-step"><em>SUCCESS</em></span></td>
+                <td width="100"><span class="top-level-step"><em>3.36s</em></span></td>
+            </tr>
+
+        </table>
+    </div>
+</div>
+
+<div id="beforefooter"></div>
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <span class="version">Serenity BDD version 4.0.14</span>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function toggleDiv(divId) {
+        $("#" + divId).toggle();
+        var $icon = $(".img" + divId);
+        $icon.toggleClass("bi-caret-right-square");
+        $icon.toggleClass("bi-caret-down-square");
+    }
+</script>
+
+
+<script type="text/javascript">
+    //<![CDATA[
+
+    $(document).ready(function () {
+        $('img.screenshot').imgPreview({
+            imgCSS: {
+                width: '500px'
+            },
+            distanceFromCursor: {top: 10, left: -200}
+        });
+    });
+
+    //]]>
+</script>
+<div id="imgPreviewContainer" style="position: absolute; top: 612px; left: 355px; display: none; " class=""><img
+            src="" style="display: none; "></div>
+<div id="imgPreviewContainer2" style="position: absolute; top: 925px; left: 320px; display: none; " class="">
+    <img style="width: 200px; display: none; " src=""></div>
+<div id="imgPreviewWithStyles" style="position: absolute; top: 1272px; left: 321px; display: none; " class="">
+    <img style="height: 200px; opacity: 1; display: none; " src=""></div>
+<div id="imgPreviewWithStyles2" style="display: none; position: absolute; "><img style="height: 200px; "></div>
+<div id="imgPreviewWithStyles3" style="display: none; position: absolute; "><img style="height: 200px; "></div>
+
+</div>
+</body>
+</html>

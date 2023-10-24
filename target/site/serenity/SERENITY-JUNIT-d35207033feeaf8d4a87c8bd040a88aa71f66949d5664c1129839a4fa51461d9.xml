@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><testsuite errors="0" failures="0" name="Testing Country Service" skipped="0" tests="4" time="4.23" timestamp="2023-10-24 10:21:14"><testcase name="Get Country by Alpha Code and name"/><testcase name="Get Calling code using currency"/></testsuite>
